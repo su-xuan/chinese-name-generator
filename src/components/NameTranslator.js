@@ -41,7 +41,7 @@ class NameTranslator extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const that = this;
-    fetch(`http://localhost:3000/getName?name=${this.state.username}`, {
+    fetch(`/getName?name=${this.state.username}`, {
       method: "GET",
       mode: "no-cors",
       headers: {
@@ -50,9 +50,9 @@ class NameTranslator extends Component {
     }).then(function(response) {
         console.log(response);
         if(response.status === 200) {
-            return response;
+            return response.json();
         } else {
-            return response.status;
+            return 'Server Error';
         }
     }, function(error){
         console.log(error.message);
@@ -60,7 +60,7 @@ class NameTranslator extends Component {
         console.log(json);
         that.setState({
             submitted: true,
-            chineseName: json.names ? json.names[0].chineseName : json,
+            chineseName: json.names[0].chineseName,
             submittedUsername: that.state.username
         })
     });
