@@ -16,35 +16,50 @@ class ContactForm extends Component {
       submitted: false,
       email: "",
     };
-    this.handleEnter = this.handleEnter.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleEnter(input) {}
+  handleEnter(input) {
+    const target = input.target;
+    const value = input.target.value;
+    const name = target.id;
+    this.setState({ [name]: value });
+  }
 
-  handleSubmit(event) {}
-
+  handleSubmit(event) {
+    if(this.state.description === "" || this.state.email === "")
+      {alert("Please complete the form before submit. ")}
+    else {alert(
+          "Thank you for your interest, you'll receive a cutomised Chinese name within 10 days!"
+        );
+        this.setState({submitted: true});
+      }
+  }
   render() {
     return (
       <div className="contact-form">
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <FormLabel>
+            <FormLabel htmlFor="description">
               Tell me about yourself, let me know what’s your expectation.
             </FormLabel>
             <FormControl
               type="text"
               id="description"
-              onChange="this.handleEnter"
+              onChange="this.handleEnter.bind(this)"
               className="description-input"
             />
           </FormGroup>
           <FormGroup>
-            <FormLabel>
+            <FormLabel htmlFor="email">
               Please also leave your email address here, then I can sent you a
               tailored name.
             </FormLabel>
-            <FormControl type="text" id="email" onChange="this.handleEnter" />
+            <FormControl
+              type="email"
+              id="email"
+              onChange="this.handleEnter.bind(this)"
+            />
           </FormGroup>
           <Button
             variant="primary"
