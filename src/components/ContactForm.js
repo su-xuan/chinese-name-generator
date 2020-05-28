@@ -8,6 +8,7 @@ import {
   FormLabel,
 } from "react-bootstrap";
 
+
 class ContactForm extends Component {
   constructor() {
     super();
@@ -21,20 +22,35 @@ class ContactForm extends Component {
 
   handleEnter(input) {
     const target = input.target;
-    const value = input.target.value;
+    const value = target.value;
     const name = target.id;
     this.setState({ [name]: value });
   }
-
   handleSubmit(event) {
-    if(this.state.description === "" || this.state.email === "")
-      {alert("Please complete the form before submit. ")}
-    else {alert(
-          "Thank you for your interest, you'll receive a cutomised Chinese name within 10 days!"
-        );
-        this.setState({submitted: true});
-      }
+    event.preventDefault();
+    if (!this.state.description.length || !this.state.email.length) {
+      alert(`Please complete the form before submit. description: ${this.state.description} ${this.state.description.length} email: ${this.state.email} ${this.state.email.length}`);
+    } else {
+      const data = {
+        description: this.state.description,
+        email: this.state.email
+      };
+      fetch('http://localhost:5000/sendMail', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        mode: "cors",
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(
+        data => {
+          console.log('Sucess:', data);
+        })
+        .catch((error) => {console.log('Error:', error);
+      });
+    }
   }
+
   render() {
     return (
       <div className="contact-form">
@@ -46,7 +62,7 @@ class ContactForm extends Component {
             <FormControl
               type="text"
               id="description"
-              onChange="this.handleEnter.bind(this)"
+              onChange={this.handleEnter.bind(this)}
               className="description-input"
             />
           </FormGroup>
@@ -58,7 +74,7 @@ class ContactForm extends Component {
             <FormControl
               type="email"
               id="email"
-              onChange="this.handleEnter.bind(this)"
+              onChange={this.handleEnter.bind(this)}
             />
           </FormGroup>
           <Button

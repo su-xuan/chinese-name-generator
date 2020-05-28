@@ -42,7 +42,7 @@ class NameTranslator extends Component {
       method: "GET",
       mode: "no-cors",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
     })
       .then(
@@ -60,24 +60,19 @@ class NameTranslator extends Component {
       )
       .then(function (json) {
         console.log(json);
-        if (Object.hasOwnProperty("chineseName")) {
-          throw new Error(
-            "Unfortunately our name dictionary doesn't know your name yet. Please try to use the contact form on Tailored page. Let me help you!"
-          );
+        if (!json.names || !json.names.length) {
+          alert("Unfortunately our name dictionary doesn't know your name yet. Please try to use the contact form on Tailored page. Let me help you!");
+
         } else {
           that.setState({
             submitted: true,
-            chineseName: "Butts", // json.names[0].chineseName,
+            chineseName: json.names[0].chineseName,
             submittedUsername: that.state.username,
           });
         }
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.data !== this.props.data) {
-    }
-  }
 
   render() {
     return (
