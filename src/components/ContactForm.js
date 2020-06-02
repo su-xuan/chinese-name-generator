@@ -29,7 +29,7 @@ class ContactForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if (!this.state.description.length || !this.state.email.length) {
-      alert(`Please complete the form before submit. description: ${this.state.description} ${this.state.description.length} email: ${this.state.email} ${this.state.email.length}`);
+      alert(`Please complete the form before submit.`);
     } else {
       const data = {
         description: this.state.description,
@@ -45,6 +45,7 @@ class ContactForm extends Component {
       .then(
         data => {
           console.log('Sucess:', data);
+          alert('Request submitted. Thank you for the interest! ');
         })
         .catch((error) => {console.log('Error:', error);
       });
