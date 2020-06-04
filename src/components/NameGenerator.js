@@ -12,30 +12,59 @@ class NameGenerator extends Component {
       'Click here to get an authentic Chinese name!'],
       submitted: false,
       chineseName: "",
+      gender: 'neutral',
       button: "I WANT A CHINESE NAME!"
     };
     this.handleClick = this.handleClick.bind(this);
-  }
+  };
+
 
 handleClick() {
-  this.submitted? this.setState({
-    submitted:false
-  }):this.setState({
-    text: [
-      'Congratulations!',
-      'We randomly picked a gender non-exclusive Chinese given name for you, which is:'
-    ],
-    submitted:true,
-    chineseName:"test",
-    button: "Don’t like it? Try it again"
+  const that = this;
+  fetch(`/getRandomName?gender=${this.state.gender}`, {
+    method: "GET",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    }
   })
+  .then(
+    function (response) {
+      console.log(response);
+      if (response.status === 200)  {
+        return response.json();
+      } else {
+        return "Server Error";
+      }
+    },
+    function (error) {
+      console.log(error.message);
+    }
+
+  )
+  .then(
+    function (json) {
+      that.submitted? that.setState({
+        submitted:false
+      }):that.setState({
+        text: [
+          'Congratulations!',
+          'We randomly picked a gender non-exclusive Chinese given name for you, which is:'
+        ],
+        submitted:true,
+        chineseName: json.chineseName[0].given_name,
+        button: "Don’t like it? Try it again"
+      });
+    }
+  )
+
 };
 
   render() {
     return (
       <Container fluid="md">
         <Row>
-        <h3> {this.state.text.map((text) => {return <p>{text}</p>})}</h3>
+        <h3> {this.state.text.map((text) => {return <p key={text} >{text}</p>})}</h3>
         </Row>
         <Row>
         <p id="Name">{this.state.chineseName}</p>

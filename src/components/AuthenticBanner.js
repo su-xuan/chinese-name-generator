@@ -11,7 +11,7 @@ class AuthenticBanner extends Component {
             <NameGenerator />
           </Col>
           <Col sm={5} lg={5}>
-            <Image src="/image/side-image.jpg" Id="teaSet" />
+            <Image src="/image/side-image.jpg" id="teaSet" />
           </Col>
         </Row>
       </Container>
