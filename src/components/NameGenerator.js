@@ -67,7 +67,7 @@ handleClick() {
         <h3> {this.state.text.map((text) => {return <p key={text} >{text}</p>})}</h3>
         </Row>
         <Row>
-        <p id="Name">{this.state.chineseName}</p>
+        <p className="Name">{this.state.chineseName}</p>
         </Row>
         <Row><Button size="lg" block className="submitButton" onClick={this.handleClick}>{this.state.button}</Button></Row>
       </Container>

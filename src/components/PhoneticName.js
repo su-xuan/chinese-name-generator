@@ -5,10 +5,10 @@ class PhoneticName extends Component {
     if (this.props.submitted === true && this.props.username.length > 0) {
       return (
         <div>
-        <h2>
-          {this.props.submittedUsername}'s phonetic Chinese name is:{" "}
-          {this.props.chineseName}{" "}
-        </h2>
+          <h2>
+            {this.props.submittedUsername}'s phonetic Chinese name is:{" "}
+          </h2>
+          <h2 className="Name">{this.props.chineseName} </h2>
         </div>
       );
     } else {
