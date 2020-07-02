@@ -4,9 +4,7 @@ import Navbar from './Navbar'
 class Header extends Component {
   render (){
     return (
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
     )
   }
 

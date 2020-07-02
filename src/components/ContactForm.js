@@ -61,10 +61,13 @@ class ContactForm extends Component {
               Tell me about yourself, let me know what’s your expectation.
             </FormLabel>
             <FormControl
+              as="textarea"
               type="text"
               id="description"
               onChange={this.handleEnter.bind(this)}
               className="description-input"
+              placeholder="Enter your expectations here"
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -76,6 +79,8 @@ class ContactForm extends Component {
               type="email"
               id="email"
               onChange={this.handleEnter.bind(this)}
+              placeholder="Enter your email here"
+              required
             />
           </FormGroup>
           <Button

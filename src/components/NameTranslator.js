@@ -17,24 +17,31 @@ class NameTranslator extends Component {
       submitted: false,
       chineseName: "",
       submittedUsername: "",
+      oldValue:""
     };
     this.handleEnter = this.handleEnter.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   handleEnter(input) {
     if (input.length <= 0) {
       this.setState({
         username: "",
-        submitted: false,
         chineseName: "",
       });
     } else {
-      this.setState({
-        username: input.target.value,
-      });
+      if(this.oldValue !== input.target.value){
+        this.setState({
+          username: input.target.value,
+          submitted: false,
+          submittedUsername: ""
+        });
+      }
     }
   }
+
+
   handleSubmit(event) {
     event.preventDefault();
     const that = this;
@@ -64,13 +71,15 @@ class NameTranslator extends Component {
           alert("Unfortunately our name dictionary doesn't know your name yet. Please try to use the contact form on Tailored page. Let me help you!");
 
         } else {
-          that.setState({
-            submitted: true,
-            chineseName: json.names[0].chineseName,
-            submittedUsername: that.state.username,
-          });
+          that.setState((state)=>{
+            return {
+              submitted: true,
+              chineseName: json.names[0].chineseName,
+              submittedUsername: state.username,
+            }
+          } );
         }
-      });
+      })
   }
 
 
@@ -78,11 +87,13 @@ class NameTranslator extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <FormLabel htmlFor="first-name">Enter your name:</FormLabel>
+          <FormLabel htmlFor="first-name">Name translation:</FormLabel>
           <FormControl
             type="text"
             id="first-name"
             onChange={this.handleEnter}
+            required
+            placeholder="Enter your name "
           />
           <Button variant="primary" type="submit" className="submitButton">
             Submit
@@ -97,6 +108,8 @@ class NameTranslator extends Component {
       </Form>
     );
   }
+
+
 }
 
 export default NameTranslator;
