@@ -56,9 +56,9 @@ code {
 text-align:center;
 font: Bold 60px/62px 'Ma Shan Zheng', cursive;;
 letter-spacing: 1px;
-color: #921E0D;
+color: #000000;
 animation-name: display;
-animation-duration: 5s;
+animation-duration: 3s;
 }
 
 @keyframes display {
@@ -71,7 +71,7 @@ animation-duration: 5s;
   }
 
   100% {
-    color: #921E0D;
+    color: #000000;
   }
 }
 
@@ -95,8 +95,10 @@ animation-duration: 5s;
   margin-right: 1em;
   font-weight: bold;
 }
-
-.tab:hover {
+a {
+  color: #897372;
+}
+a:hover, .tab:hover {
   color: #921E0D;
   text-decoration-line: none;
 }
