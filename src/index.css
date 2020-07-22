@@ -23,6 +23,7 @@ code {
 }
 .modal-footer {
   position: relative;
+  overflow: hidden;
   width: 100%;
   bottom: 0;
   border: none;
@@ -106,7 +107,6 @@ a:hover, .tab:hover {
 #watertown {
   border-radius: 47px;
   opacity: 1;
-  max-height: 33em;
 }
 
 
