@@ -45,7 +45,7 @@ class NameTranslator extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const that = this;
-    fetch(`/getName?name=${this.state.username}`, {
+    fetch(`${process.env.SERVER}/getName?name=${this.state.username}`, {
       method: "GET",
       mode: "no-cors",
       headers: {

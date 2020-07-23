@@ -24,7 +24,7 @@ class NameGenerator extends Component {
   handleClick() {
     const that = this;
     this.setState({ loading: true }, () => {
-      fetch(`/getRandomName?gender=${this.state.gender}`, {
+      fetch(`${process.env.SERVER}/getRandomName?gender=${this.state.gender}`, {
         method: "GET",
         mode: "no-cors",
         headers: {
