@@ -35,7 +35,7 @@ class ContactForm extends Component {
         description: this.state.description,
         email: this.state.email
       };
-      fetch(`${process.env.SERVER}/sendMail`, {
+      fetch(`${process.env.REACT_APP_SERVER}/sendMail`, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         mode: "cors",
