@@ -13,7 +13,7 @@ class Footer extends Component {
             <p>Get a Customised Chinese Name</p>
           </Col>
           <Col fluid sm={12} lg={3} id="Copyright">
-            <p>Copyright &copy; 2020 Xuan Su</p>
+            <p>Copyright &copy; 2020 Xuan Su, Bryan Ottho</p>
           </Col>
         </Row>
       </Modal.Footer>
