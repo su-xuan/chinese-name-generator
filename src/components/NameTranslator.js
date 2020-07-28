@@ -47,7 +47,6 @@ class NameTranslator extends Component {
     const that = this;
     fetch(`${process.env.REACT_APP_SERVER}/getName?name=${this.state.username}`, {
       method: "GET",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json"
       },

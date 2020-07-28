@@ -26,7 +26,6 @@ class NameGenerator extends Component {
     this.setState({ loading: true }, () => {
       fetch(`${process.env.REACT_APP_SERVER}/getRandomName?gender=${this.state.gender}`, {
         method: "GET",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
