@@ -71,7 +71,7 @@ class ContactForm extends Component {
           </FormGroup>
           <FormGroup>
             <FormLabel htmlFor="email">
-              Please also leave your email address here, then I can sent you a
+              Please also leave your email address here, then I can send you a
               tailored name.
             </FormLabel>
             <FormControl
