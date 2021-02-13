@@ -81,6 +81,7 @@ class ContactForm extends Component {
               placeholder="Enter your email here"
               required
             />
+            <div class="g-recaptcha" data-sitekey="6LeO-8AZAAAAACgckWDvmi0NiTLmhL25v_ZYOCjp"></div>
           </FormGroup>
           <Button
             variant="primary"
